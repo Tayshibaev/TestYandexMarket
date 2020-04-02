@@ -1,10 +1,14 @@
-package pages;
+package steps;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.yandex.qatools.allure.annotations.Attachment;
 import util.TestProperties;
 
 import java.util.Properties;
@@ -15,7 +19,8 @@ public class BasePage {
     protected static Properties properties = TestProperties.getINSTANCE().getProperties();
     protected static String baseUrl;
 
-    @BeforeClass
+   @Before
+   // @BeforeClass
     public static void setUp() {
 
         switch (properties.getProperty("browser")) {
@@ -38,7 +43,8 @@ public class BasePage {
         driver.get(baseUrl);
     }
 
-    @AfterClass
+    @After
+  //  @AfterClass
     public static void tearDown() {
         driver.quit();
     }
@@ -47,12 +53,10 @@ public class BasePage {
         return driver;
     }
 
-    public void fillField(By by , String val)
-    {
-        //клик для того, чтобы окно с выбором даты исчезло
-        driver.findElement(by).click();
-
-        driver.findElement(by).clear();
-        driver.findElement(by).sendKeys(val);
+    @Attachment(type = "image/png", value = "Screenshot")
+    public static byte[] takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
+
+
 }

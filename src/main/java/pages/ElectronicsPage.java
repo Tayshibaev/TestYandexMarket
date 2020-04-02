@@ -4,8 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BasePage;
 
 public class ElectronicsPage {
 
@@ -26,6 +25,6 @@ public class ElectronicsPage {
 
     public void selectItemFromPortTechCategory(String item)
     {
-        categoryPortableTech.findElement(By.xpath(".//li//a[contains(text(),'"+item+")']")).click();
+        categoryPortableTech.findElement(By.xpath(".//li//a[contains(text(),'"+item+"')]")).click();
     }
 }

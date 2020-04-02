@@ -3,7 +3,7 @@ import pages.*;
 import steps.BasePage;
 
 
-public class YandexMarketTest extends BasePage {
+public class YandexMarketTestPort extends BasePage {
 
     @Test
     public void test() {
@@ -12,25 +12,29 @@ public class YandexMarketTest extends BasePage {
 
         new MarketPage().selectPanelItem("Электроника");
 
-        new ElectronicsPage().selectItemFromAudioAndVideoCategory("Телевизоры");
+        new ElectronicsPage().selectItemFromPortTechCategory("Наушники");
 
         new FoundPage().clickAdvanceSearchBtn();
 
-        new AdvancedSearchPages().fillFieldPrice("20000")
-                .checboxProducer("LG")
-                .checboxProducer("Samsung")
+        new AdvancedSearchPages().fillFieldPrice("5000")
+                .checboxProducer("Beats")
                 .clickContinue();
 
-        //Показывать по 12
-        new FoundPage().selectShow12Count()
+        new FoundPage()
                 //запомнить все элементы и 1ый элемент
                 .rememberFirstItem()
                 //проверка что элементов 12
-                .checkShowCount(12)
+              //  .checkShowCount(12)
                 //заполнить поле 1ым элементом
                 .fillFieldFirstItem()
-                //нажать на кнопку найти
-                .clickSearchBtn()
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        //нажать на кнопку найти
+              //  new FoundPage()
+                        .clickSearchBtn()
                 //Переход по ссылке и переход на новую страницу и закрытие старой
                 .clickLink();
 
